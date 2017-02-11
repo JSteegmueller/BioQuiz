@@ -17,7 +17,7 @@ namespace BioQuiz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Text = "Hallo Welt";
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
