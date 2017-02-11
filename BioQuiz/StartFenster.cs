@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace BioQuiz
 {
-    public partial class Form1 : Form
+    public partial class StartFenster : Form
     {
-        public Form1()
+        public StartFenster()
         {
             InitializeComponent();
         }
