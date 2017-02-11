@@ -60,10 +60,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StartFenster.cs">
+    <Compile Include="Forms\EndUebersicht.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartFenster.Designer.cs">
+    <Compile Include="Forms\EndUebersicht.designer.cs">
+      <DependentUpon>EndUebersicht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FragenFenster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FragenFenster.designer.cs">
+      <DependentUpon>FragenFenster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StartFenster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StartFenster.Designer.cs">
       <DependentUpon>StartFenster.cs</DependentUpon>
     </Compile>
     <Compile Include="Klassen\Frage.cs" />
@@ -71,7 +83,13 @@
     <Compile Include="Klassen\FragenKatalog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="StartFenster.resx">
+    <EmbeddedResource Include="Forms\EndUebersicht.resx">
+      <DependentUpon>EndUebersicht.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FragenFenster.resx">
+      <DependentUpon>FragenFenster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StartFenster.resx">
       <DependentUpon>StartFenster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,5 +121,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
