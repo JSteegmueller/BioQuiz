@@ -16,9 +16,9 @@ namespace BioQuiz
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartFenster());
-            Application.Run(new EndUebersicht());
+            /*Application.Run(new EndUebersicht());
             Application.Run(new FragenFenster());
-            Application.Run(new Anleitung());
+            Application.Run(new Anleitung());*/
         }
     }
 }
