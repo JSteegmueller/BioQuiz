@@ -1,0 +1,48 @@
+{
+  "frage1": {
+    "frage": "Was ist Bilogie?",
+    "antwort1": "Naturlehere",
+    "antwort2": "Lehre des Lebens",
+    "antwort3": "Lehre der Tiere",
+    "antwort4": "Menschenlehre",
+    "richtigeAntwort": "1",
+    "erklaerung": "bios=Leben, logos=Lehre"
+
+  },
+  "frage2": {
+    "frage": "Was hat die pflanzliche Eucyte, was die tierische nicht hat?",
+    "antwort1": "Mitochondrien",
+    "antwort2": "Peroxisomen",
+    "antwort3": "Zellkern",
+    "antwort4": "Chloroplasten",
+    "richtigeAntwort": "3",
+    "erklaerung": "Chloroplasten sind fuer die Photosynthese verantwortlich,was nur in der Pflanzlichen Eucyte passiert"
+  },
+  "frage3": {
+    "frage": "Gleichung der Photosynthese",
+    "antwort1": "CO2+H2O+Energie--> Glucose+O2",
+    "antwort2": "CO2+H2O+Glucose--> Energie+O2",
+    "antwort3": "O2+Energie+H2O--> CO2+Glucose",
+    "antwort4": "O2+CO2--> H2O+Energie+Glucose",
+    "richtigeAntwort": "0",
+    "erklaerung": "Unser Abfallstoff CO2 wird von den Pflanzen ind O2 umgewandelt. Dafür benötigen sie aber Wasser und Energie/Sonnenstrahlen."
+  },
+  "frage4": {
+    "frage": "Phasen der Mitose",
+    "antwort1": "Anaphase, Prophase, Metaphase, Telophase",
+    "antwort2": "Metaphase, Anaphase, Telophase, Prophase",
+    "antwort3": "Prophase, Metaphase, Anaphase, Telophase",
+    "antwort4": "Telophase, Prophase, Metaphase, Anaphase",
+    "richtigeAntwort": "2"
+  },
+  "frage5": {
+    "frage": "Was ist das Watson-Crick-Modell?",
+    "antwort1": "Ein Modell unsere DNA",
+    "antwort2": "Ein Modell der Nahrungskette",
+    "antwort3": "Ein Modell unseres Planeten als riesiges Biotop",
+    "antwort4": "Ein Modell unserer Koerperzellen",
+    "richtigeAntwort": "0",
+    "erklaerung": "Im Jahr 1953 entstandene Modell unsere DNA von J.Watson und F.Crick"
+  }
+
+}
