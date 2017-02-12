@@ -34,7 +34,12 @@ namespace BioQuiz.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.main.onEvent(BioQuiz.Klassen.QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
+        }
 
+        private void FragenFenster_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

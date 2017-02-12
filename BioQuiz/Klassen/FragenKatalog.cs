@@ -28,18 +28,21 @@ namespace BioQuiz.Klassen
             {
                 returnFragen[i] = dieFragen[randGenerator.Next(0, anzFragen)];
 
-                //Keine Frage doppelt//
-                int safe = i;
-                bool eigen = true;
-                foreach (Frage x in returnFragen)
+                //Keine Frage doppelt wenn anzFragen > anzGewollteFragen //
+                if(anzFragen >= anzGewollteFragen)
                 {
-                    if (x == returnFragen[safe])
+                    int safe = i;
+                    bool eigen = true;
+                    foreach (Frage x in returnFragen)
                     {
-                        if (eigen == false)
+                        if (x == returnFragen[safe])
                         {
-                            i--;
+                            if (eigen == false)
+                            {
+                                i--;
+                            }
+                            eigen = false;
                         }
-                        eigen = false;
                     }
                 }
             }

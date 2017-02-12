@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace BioQuiz.Forms
 {
-    public partial class Anleitung : Form
+    public partial class EndUebersichtFenster : Form
     {
-        public Anleitung()
+        public EndUebersichtFenster()
         {
             InitializeComponent();
+        }
+
+        private void EndUebersichtFenster_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BioQuiz.Forms
 {
-    partial class EndUebersicht
+    partial class EndUebersichtFenster
     {
         /// <summary>
         /// Required designer variable.
@@ -72,15 +72,16 @@
             this.Richtig_Falsch.Name = "Richtig_Falsch";
             this.Richtig_Falsch.ReadOnly = true;
             // 
-            // EndUebersicht
+            // EndUebersichtFenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(530, 371);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
-            this.Name = "EndUebersicht";
+            this.Name = "EndUebersichtFenster";
             this.Text = "Ergebnis";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EndUebersichtFenster_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

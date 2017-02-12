@@ -60,17 +60,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Anleitung.cs">
+    <Compile Include="Forms\AnleitungFenster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Anleitung.Designer.cs">
-      <DependentUpon>Anleitung.cs</DependentUpon>
+    <Compile Include="Forms\AnleitungFenster.Designer.cs">
+      <DependentUpon>AnleitungFenster.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EndUebersicht.cs">
+    <Compile Include="Forms\EndUebersichtFenster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EndUebersicht.designer.cs">
-      <DependentUpon>EndUebersicht.cs</DependentUpon>
+    <Compile Include="Forms\EndUebersichtFenster.designer.cs">
+      <DependentUpon>EndUebersichtFenster.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FragenFenster.cs">
       <SubType>Form</SubType>
@@ -87,13 +87,14 @@
     <Compile Include="Klassen\Frage.cs" />
     <Compile Include="Klassen\FragenCreator.cs" />
     <Compile Include="Klassen\FragenKatalog.cs" />
+    <Compile Include="Klassen\Steuerung.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Anleitung.resx">
-      <DependentUpon>Anleitung.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AnleitungFenster.resx">
+      <DependentUpon>AnleitungFenster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EndUebersicht.resx">
-      <DependentUpon>EndUebersicht.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EndUebersichtFenster.resx">
+      <DependentUpon>EndUebersichtFenster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FragenFenster.resx">
       <DependentUpon>FragenFenster.cs</DependentUpon>

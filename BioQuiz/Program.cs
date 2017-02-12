@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using BioQuiz.Forms;
+using BioQuiz.Klassen;
 
 namespace BioQuiz
 {
@@ -10,15 +11,12 @@ namespace BioQuiz
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
+        public static QuizSteuerung main;
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartFenster());
-            /*Application.Run(new EndUebersicht());
-            Application.Run(new FragenFenster());
-            Application.Run(new Anleitung());*/
+            main = new QuizSteuerung();
+            main.init();
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BioQuiz.Forms
 {
-    public partial class EndUebersicht : Form
+    public partial class AnleitungFenster : Form
     {
-        public EndUebersicht()
+        public AnleitungFenster()
         {
             InitializeComponent();
         }

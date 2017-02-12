@@ -51,7 +51,6 @@
             // 
             this.comboBox1.AccessibleDescription = "";
             this.comboBox1.AccessibleName = "";
-            this.comboBox1.DisplayMember = "hh";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -60,7 +59,8 @@
             "15",
             "20",
             "30",
-            "Alle"});
+            "50",
+            "100"});
             this.comboBox1.Location = new System.Drawing.Point(70, 74);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -76,7 +76,6 @@
             this.label1.Size = new System.Drawing.Size(185, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Anzahl der Fragen auswählen";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
@@ -99,6 +98,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Anleitung: Fragen hinzufuegen";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // StartFenster
             // 
@@ -120,11 +120,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button3;
     }
 }
 
