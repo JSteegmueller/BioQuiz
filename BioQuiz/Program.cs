@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using BioQuiz.Forms;
 
 namespace BioQuiz
 {
@@ -15,6 +16,9 @@ namespace BioQuiz
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartFenster());
+            Application.Run(new EndUebersicht());
+            Application.Run(new FragenFenster());
+            Application.Run(new Anleitung());
         }
     }
 }

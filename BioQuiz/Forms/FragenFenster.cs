@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BioQuiz
+namespace BioQuiz.Forms
 {
     public partial class FragenFenster : Form
     {
@@ -28,6 +28,11 @@ namespace BioQuiz
         }
 
         private void FragenFenster_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

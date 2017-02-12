@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BioQuiz
+namespace BioQuiz.Forms
 {
     public partial class StartFenster : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace BioQuiz
+﻿namespace BioQuiz.Forms
 {
     partial class EndUebersicht
     {

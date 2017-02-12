@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BioQuiz
+namespace BioQuiz.Forms
 {
     public partial class EndUebersicht : Form
     {
