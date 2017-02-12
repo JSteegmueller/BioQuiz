@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JSONTest.Klassen
+namespace BioQuiz.Klassen
 {
     class Frage
     {
