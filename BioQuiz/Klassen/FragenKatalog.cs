@@ -27,9 +27,23 @@ namespace BioQuiz.Klassen
             for (int i = 0; i < anzGewollteFragen; i++)
             {
                 returnFragen[i] = dieFragen[randGenerator.Next(0, anzFragen)];
+
+                //Keine Frage doppelt//
+                int safe = i;
+                bool eigen = true;
+                foreach (Frage x in returnFragen)
+                {
+                    if (x == returnFragen[safe])
+                    {
+                        if (eigen == false)
+                        {
+                            i--;
+                        }
+                        eigen = false;
+                    }
+                }
             }
             return returnFragen;
         }
-  
     }
 }
