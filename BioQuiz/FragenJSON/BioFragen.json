@@ -1,12 +1,12 @@
 [
   {
     "frage1": {
-      "frage": "Was ist Bilogie?",
+      "frage": "Was ist Biologie?",
       "antwort1": "Naturlehere",
       "antwort2": "Lehre des Lebens",
       "antwort3": "Lehre der Tiere",
       "antwort4": "Menschenlehre",
-      "richtigeAntwort": "1",
+      "richtigeAntwort": "2",
       "erklaerung": "bios=Leben, logos=Lehre"
 
     },
@@ -16,7 +16,7 @@
       "antwort2": "Peroxisomen",
       "antwort3": "Zellkern",
       "antwort4": "Chloroplasten",
-      "richtigeAntwort": "3",
+      "richtigeAntwort": "4",
       "erklaerung": "Chloroplasten sind fuer die Photosynthese verantwortlich,was nur in der Pflanzlichen Eucyte passiert"
     },
     "frage3": {
@@ -25,8 +25,8 @@
       "antwort2": "CO2+H2O+Glucose--> Energie+O2",
       "antwort3": "O2+Energie+H2O--> CO2+Glucose",
       "antwort4": "O2+CO2--> H2O+Energie+Glucose",
-      "richtigeAntwort": "0",
-      "erklaerung": "Unser Abfallstoff CO2 wird von den Pflanzen ind O2 umgewandelt. Dafür benötigen sie aber Wasser und Energie/Sonnenstrahlen."
+      "richtigeAntwort": "1",
+      "erklaerung": "Unser Abfallstoff CO2 wird von den Pflanzen in O2 umgewandelt. Dafuer benoetigen sie aber Wasser und Energie/Sonnenstrahlen."
     },
     "frage4": {
       "frage": "Phasen der Mitose",
@@ -34,7 +34,7 @@
       "antwort2": "Metaphase, Anaphase, Telophase, Prophase",
       "antwort3": "Prophase, Metaphase, Anaphase, Telophase",
       "antwort4": "Telophase, Prophase, Metaphase, Anaphase",
-      "richtigeAntwort": "2"
+      "richtigeAntwort": "3"
     },
     "frage5": {
       "frage": "Was ist das Watson-Crick-Modell?",
@@ -42,7 +42,7 @@
       "antwort2": "Ein Modell der Nahrungskette",
       "antwort3": "Ein Modell unseres Planeten als riesiges Biotop",
       "antwort4": "Ein Modell unserer Koerperzellen",
-      "richtigeAntwort": "0",
+      "richtigeAntwort": "1",
       "erklaerung": "Im Jahr 1953 entstandene Modell unsere DNA von J.Watson und F.Crick"
     }
 
