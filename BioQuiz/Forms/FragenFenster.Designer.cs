@@ -46,6 +46,7 @@
             this.label1.Size = new System.Drawing.Size(44, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Frage";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // radioButton1
             // 
@@ -125,6 +126,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FragenFenster";
             this.Text = "FragenFenster";
+            this.Load += new System.EventHandler(this.FragenFenster_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
