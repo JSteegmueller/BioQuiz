@@ -112,7 +112,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(277, 136);
+            this.label2.Location = new System.Drawing.Point(250, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 16);
             this.label2.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(226, 227);
+            this.button2.Location = new System.Drawing.Point(214, 278);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 23);
             this.button2.TabIndex = 7;
@@ -132,7 +132,7 @@
             // 
             this.label3.AutoEllipsis = true;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 319);
+            this.label3.Location = new System.Drawing.Point(22, 329);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 8;
