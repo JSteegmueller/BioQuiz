@@ -33,6 +33,7 @@ namespace BioQuiz.Klassen
         public static int EVENT_BUTTON_START = 1;
         public static int EVENT_BUTTON_ANLEITUNG = 2;
         public static int EVENT_BUTTON_FRAGEABGEBEN = 3;
+        public static int EVENT_BUTTON_WEITER = 4;
 
 
 
@@ -82,31 +83,20 @@ namespace BioQuiz.Klassen
                 fragenForm.label1.Text = quizFragen[ctrFragen].dieFrage;
                 fragenForm.label2.Visible = false;
                 StringBuilder cap = new StringBuilder("Frage " + 1 + " von " + back);
-                fragenForm.Text = cap.ToString(); 
+                fragenForm.Text = cap.ToString();
+
+                fragenForm.button1.Enabled = false;
+                fragenForm.button2.Enabled = true;
+                fragenForm.label2.Text = "";
+                fragenForm.label3.Text = "";
+
+
                 fragenForm.Show();
             }
-            else if (eventID == EVENT_BUTTON_FRAGEABGEBEN)
+            else if (eventID == EVENT_BUTTON_WEITER)
             {
-                if (fragenForm.radioButton1.Checked == true)
-                {
-                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(0);
-                }
-
-                else if(fragenForm.radioButton2.Checked == true)
-                {
-                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(1);
-                }
-
-                else if (fragenForm.radioButton3.Checked == true)
-                {
-                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(2);
-                }
-
-                else if (fragenForm.radioButton4.Checked == true)
-                {
-                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(3);
-                }
-
+                fragenForm.label2.Text = "";
+                fragenForm.label3.Text = "";
                 if (anzFragen > 1)
                 {
 
@@ -146,12 +136,48 @@ namespace BioQuiz.Klassen
                     endUebersichtForm.Show();
   
                 }
+                fragenForm.button1.Enabled = false;
+                fragenForm.button2.Enabled = true;
+
+            }
+            else if (eventID == EVENT_BUTTON_FRAGEABGEBEN)
+            {
+                if (fragenForm.radioButton1.Checked == true)
+                {
+                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(0);
+                }
+
+                else if (fragenForm.radioButton2.Checked == true)
+                {
+                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(1);
+                }
+
+                else if (fragenForm.radioButton3.Checked == true)
+                {
+                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(2);
+                }
+
+                else if (fragenForm.radioButton4.Checked == true)
+                {
+                    frageRichtig = quizFragen[ctrFragen].beantworteFrage(3);
+                }
+
+
                 if (frageRichtig)
                 {
-                    fragenForm.label2.Visible = true;
-                    fragenForm.label2.Text = "Das War Richtig";
+                    fragenForm.label2.Text = "Richtig!";
+                    fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung;
                 }
+                else
+                {
+                    fragenForm.label2.Text = "Falsch!";
+                    fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung;
+                }
+                fragenForm.label2.Visible = true;
+                fragenForm.button1.Enabled = true;
+                fragenForm.button2.Enabled = false;
             }
+
         }
     }
 }
