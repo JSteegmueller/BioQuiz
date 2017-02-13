@@ -18,6 +18,7 @@ namespace BioQuiz.Klassen
         int anzFragen;
         int ctrFragen = 0;
         bool frageRichtig = false;
+        int richtigeFragen = 0;
 
         private AnleitungFenster anleitungForm;
         private EndUebersichtFenster endUebersichtForm;
@@ -118,8 +119,25 @@ namespace BioQuiz.Klassen
                 else
                 {
                     fragenForm.Hide();
+                    int i = 0;
+                    foreach (Frage x in quizFragen)
+                    {
+                        endUebersichtForm.dataGridView1.Rows.Add();
+                        endUebersichtForm.dataGridView1.Rows[i].Cells[0].Value = x.dieFrage;
+                        endUebersichtForm.dataGridView1.Rows[i].Cells[1].Value = x.getRichtigeAntwortString();
+                        endUebersichtForm.dataGridView1.Rows[i].Cells[2].Value = x.dieAntworten[x.abgegebeneAntwort];
+                        if(x.frageRichtigBeantwortet == 1)
+                        {
+                            richtigeFragen++;
+                        }
+                        endUebersichtForm.dataGridView1.AutoResizeRow(i);
+                        i++;
+                    }
+                    endUebersichtForm.dataGridView1.Rows.Add();
+                    StringBuilder rAntworten = new StringBuilder( "Du hast " + richtigeFragen + " Fragen richtig beantwortet.");
+                    endUebersichtForm.dataGridView1.Rows[i].Cells[2].Value = rAntworten;
                     endUebersichtForm.Show();
-
+  
                 }
                 if (frageRichtig)
                 {

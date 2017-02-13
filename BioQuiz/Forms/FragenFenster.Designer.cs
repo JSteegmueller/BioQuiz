@@ -126,6 +126,7 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label1);
             this.Name = "FragenFenster";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FragenFenster";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FragenFenster_FormClosed);
             this.Load += new System.EventHandler(this.FragenFenster_Load);

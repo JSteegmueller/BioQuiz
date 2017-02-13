@@ -9,6 +9,7 @@ namespace BioQuiz.Klassen
         public string   dieBegruendung;            //Das Wieso
         public int      richtigAntwort;            //Kann sein: 0 - 3
         public int      frageRichtigBeantwortet = 2;   //0 = Nein , 1 = Ja, 2 = Unbeantwortet
+        public int abgegebeneAntwort;
 
        
         
@@ -35,6 +36,7 @@ namespace BioQuiz.Klassen
         //Ueberpruefung, ob frage richtig beantwortet wurde
         public bool beantworteFrage(int antwort)
         {
+            abgegebeneAntwort = antwort;
             if (antwort == richtigAntwort)
             {
                 frageRichtigBeantwortet = 1;
