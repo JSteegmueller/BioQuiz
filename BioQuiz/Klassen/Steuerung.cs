@@ -16,6 +16,7 @@ namespace BioQuiz.Klassen
         private string fragenString;
         private Frage[] quizFragen;
         int anzFragen;
+        int back;
         int ctrFragen = 0;
         bool frageRichtig = false;
         int richtigeFragen = 0;
@@ -73,12 +74,15 @@ namespace BioQuiz.Klassen
                 startForm.Hide();
                 anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
                 quizFragen = fragenListe.getRandFragen(anzFragen);
+                back = anzFragen;
                 fragenForm.radioButton1.Text = quizFragen[ctrFragen].dieAntworten[0];
                 fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                 fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                 fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
                 fragenForm.label1.Text = quizFragen[ctrFragen].dieFrage;
                 fragenForm.label2.Visible = false;
+                StringBuilder cap = new StringBuilder("Frage " + 1 + " von " + back);
+                fragenForm.Text = cap.ToString(); 
                 fragenForm.Show();
             }
             else if (eventID == EVENT_BUTTON_FRAGEABGEBEN)
@@ -105,6 +109,9 @@ namespace BioQuiz.Klassen
 
                 if (anzFragen > 1)
                 {
+
+                    StringBuilder cap = new StringBuilder("Frage " + (ctrFragen+2) + " von " + back);
+                    fragenForm.Text = cap.ToString() ; 
 
                     ctrFragen++;
                     fragenForm.radioButton1.Text = quizFragen[ctrFragen].dieAntworten[0];

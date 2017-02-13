@@ -113,7 +113,7 @@
             this.Controls.Add(this.button1);
             this.Name = "StartFenster";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "BioQuiz";
             this.ResumeLayout(false);
             this.PerformLayout();
 
