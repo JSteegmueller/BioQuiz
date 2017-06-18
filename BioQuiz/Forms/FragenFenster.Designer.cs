@@ -62,7 +62,7 @@
             this.radioButton1.FlatAppearance.BorderSize = 0;
             this.radioButton1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton1.Location = new System.Drawing.Point(16, 87);
+            this.radioButton1.Location = new System.Drawing.Point(16, 76);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(111, 26);
             this.radioButton1.TabIndex = 1;
@@ -77,7 +77,7 @@
             this.radioButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton2.Location = new System.Drawing.Point(513, 87);
+            this.radioButton2.Location = new System.Drawing.Point(16, 214);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(111, 26);
             this.radioButton2.TabIndex = 2;
@@ -92,7 +92,7 @@
             this.radioButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton3.Location = new System.Drawing.Point(16, 148);
+            this.radioButton3.Location = new System.Drawing.Point(667, 76);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(111, 26);
             this.radioButton3.TabIndex = 3;
@@ -106,7 +106,7 @@
             this.radioButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton4.Location = new System.Drawing.Point(513, 148);
+            this.radioButton4.Location = new System.Drawing.Point(667, 214);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(111, 26);
             this.radioButton4.TabIndex = 4;
@@ -122,9 +122,9 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 395);
+            this.button1.Location = new System.Drawing.Point(0, 420);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(929, 41);
+            this.button1.Size = new System.Drawing.Size(1184, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Weiter";
             this.button1.UseVisualStyleBackColor = false;
@@ -138,7 +138,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(34, 327);
+            this.label3.Location = new System.Drawing.Point(237, 329);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(127, 22);
             this.label3.TabIndex = 8;
@@ -152,7 +152,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(299, 231);
+            this.button2.Location = new System.Drawing.Point(16, 329);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(183, 60);
             this.button2.TabIndex = 7;
@@ -167,14 +167,14 @@
             this.AutoSize = true;
             this.BackgroundImage = global::BioQuiz.Properties.Resources.backgroundQuiz;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(929, 436);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1184, 461);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -196,7 +196,7 @@
         public System.Windows.Forms.RadioButton radioButton3;
         public System.Windows.Forms.RadioButton radioButton4;
         public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button button2;
     }
 }

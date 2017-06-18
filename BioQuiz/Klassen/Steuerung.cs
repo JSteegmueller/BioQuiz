@@ -119,6 +119,7 @@ namespace BioQuiz.Klassen
 
                     ctrFragen++;
                     fragenForm.radioButton1.Text = quizFragen[ctrFragen].dieAntworten[0];
+                    
                     fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                     fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                     fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
@@ -186,7 +187,9 @@ namespace BioQuiz.Klassen
                 if (frageRichtig)
                 {
                     // fragenForm.label2.Text = "Richtig!";
-                     fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung; 
+
+                    fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung;
+                    fragenForm.button2.BackColor = Color.Green;
                     fragenForm.button2.Text = "Richtig!";
                 }
                 else

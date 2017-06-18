@@ -99,6 +99,12 @@
     <Compile Include="Forms\EndUebersichtFenster.designer.cs">
       <DependentUpon>EndUebersichtFenster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FragenEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FragenEditor.Designer.cs">
+      <DependentUpon>FragenEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FragenFenster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EndUebersichtFenster.resx">
       <DependentUpon>EndUebersichtFenster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FragenEditor.resx">
+      <DependentUpon>FragenEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FragenFenster.resx">
       <DependentUpon>FragenFenster.cs</DependentUpon>
