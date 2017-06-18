@@ -2,6 +2,7 @@
 using System.Text;
 using BioQuiz.Forms;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace BioQuiz.Klassen
 {
@@ -69,21 +70,30 @@ namespace BioQuiz.Klassen
             else if (eventID == EVENT_BUTTON_START)
             {
                 startForm.Hide();
-                anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
-                quizFragen = fragenListe.getRandFragen(anzFragen);
+
+                if ( startForm.comboBox1.SelectedItem.ToString() != "Alle")
+                {
+                    anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
+                    quizFragen = fragenListe.getRandFragen(anzFragen);
+                }
+                else
+                {
+                    anzFragen = fragenListe.getAnzFragen();
+                    quizFragen = fragenListe.getRandFragen(anzFragen);
+                }
+
+
                 back = anzFragen;
                 fragenForm.radioButton1.Text = quizFragen[ctrFragen].dieAntworten[0];
                 fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                 fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                 fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
                 fragenForm.label1.Text = quizFragen[ctrFragen].derFrageSatz;
-                fragenForm.label2.Visible = false;
                 StringBuilder cap = new StringBuilder("Frage " + 1 + " von " + back);
                 fragenForm.Text = cap.ToString();
 
                 fragenForm.button1.Enabled = false;
                 fragenForm.button2.Enabled = true;
-                fragenForm.label2.Text = "";
                 fragenForm.label3.Text = "";
 
 
@@ -91,8 +101,9 @@ namespace BioQuiz.Klassen
             }
             else if (eventID == EVENT_BUTTON_WEITER)
             {
-                fragenForm.label2.Text = "";
                 fragenForm.label3.Text = "";
+                fragenForm.button2.Text = "Antwort abgeben";
+                fragenForm.button2.BackColor = Color.Goldenrod;
                 if (anzFragen > 1)
                 {
 
@@ -105,7 +116,6 @@ namespace BioQuiz.Klassen
                     fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                     fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
                     fragenForm.label1.Text = quizFragen[ctrFragen].derFrageSatz;
-                    fragenForm.label2.Visible = false;
                     
                     anzFragen--;
                 }
@@ -161,15 +171,17 @@ namespace BioQuiz.Klassen
 
                 if (frageRichtig)
                 {
-                    fragenForm.label2.Text = "Richtig!";
-                    fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung;
+                    // fragenForm.label2.Text = "Richtig!";
+                     fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung; 
+                    fragenForm.button2.Text = "Richtig!";
                 }
                 else
                 {
-                    fragenForm.label2.Text = "Falsch!";
+                    //fragenForm.label2.Text = "Falsch!";
                     fragenForm.label3.Text = quizFragen[ctrFragen].dieBegruendung;
+                    fragenForm.button2.BackColor = Color.Red;
+                    fragenForm.button2.Text = "Falsch!";
                 }
-                fragenForm.label2.Visible = true;
                 fragenForm.button1.Enabled = true;
                 fragenForm.button2.Enabled = false;
             }

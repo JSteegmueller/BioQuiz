@@ -61,7 +61,17 @@ namespace BioQuiz.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dffe754431c9fb41c694d0ccb24bfa18__2_ {
+            get {
+                object obj = ResourceManager.GetObject("dffe754431c9fb41c694d0ccb24bfa18 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Vitruvianischer_Mann {
             get {

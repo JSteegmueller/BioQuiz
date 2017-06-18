@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -134,6 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Vitruvianischer_Mann.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dffe754431c9fb41c694d0ccb24bfa18 %282%29.jpg" />
+    <Content Include="Resources\favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

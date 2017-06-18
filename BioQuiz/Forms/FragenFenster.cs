@@ -42,5 +42,10 @@ namespace BioQuiz.Forms
             //Program.main.onEvent(Klassen.QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
             QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

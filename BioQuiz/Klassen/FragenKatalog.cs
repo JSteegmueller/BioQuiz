@@ -18,6 +18,11 @@ namespace BioQuiz.Klassen
             randGenerator = new Random();
             anzFragen = dieFragen.GetLength(0);
         }
+
+        public int getAnzFragen()
+        {
+            return anzFragen;
+        }
         
         //Bekomme ein Array mit zufälligen Fragen 
         public Frage[] getRandFragen(int anzGewollteFragen)
@@ -32,16 +37,16 @@ namespace BioQuiz.Klassen
                 if(anzFragen >= anzGewollteFragen)
                 {
                     int safe = i;
-                    bool eigen = true;
-                    foreach (Frage x in returnFragen)
+                    bool eigeneFrage = true;
+                    foreach (Frage eineFrage in returnFragen)
                     {
-                        if (x == returnFragen[safe])
+                        if (eineFrage == returnFragen[safe])
                         {
-                            if (eigen == false)
+                            if (eigeneFrage == false)
                             {
                                 i--;
                             }
-                            eigen = false;
+                            eigeneFrage = false;
                         }
                     }
                 }
