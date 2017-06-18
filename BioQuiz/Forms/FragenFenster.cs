@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BioQuiz.Klassen;
 
 namespace BioQuiz.Forms
 {
@@ -34,7 +28,8 @@ namespace BioQuiz.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.main.onEvent(BioQuiz.Klassen.QuizSteuerung.EVENT_BUTTON_WEITER);
+            //Program.main.onEvent(Klassen.QuizSteuerung.EVENT_BUTTON_WEITER);
+            QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_WEITER);
         }
 
         private void FragenFenster_FormClosed(object sender, FormClosedEventArgs e)
@@ -44,7 +39,8 @@ namespace BioQuiz.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.main.onEvent(BioQuiz.Klassen.QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
+            //Program.main.onEvent(Klassen.QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
+            QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_FRAGEABGEBEN);
         }
     }
 }
