@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using BioQuiz.Forms;
+using BioQuiz.Properties;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -38,7 +39,7 @@ namespace BioQuiz.Klassen
 
         public static void init()
         {
-            fragenString = System.IO.File.ReadAllText("BioFragen.json");
+            fragenString = Encoding.Default.GetString(Resources.BioFragen);
 
             fragenReader = new FragenCreator(fragenString);
             fragenListe = new FragenKatalog(fragenReader.getFragen());

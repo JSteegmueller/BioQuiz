@@ -22,7 +22,7 @@ namespace BioQuiz.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BioQuiz.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BioQuiz.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace BioQuiz.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,17 +63,27 @@ namespace BioQuiz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dffe754431c9fb41c694d0ccb24bfa18__2_ {
+        public static System.Drawing.Bitmap backgroundQuiz {
             get {
-                object obj = ResourceManager.GetObject("dffe754431c9fb41c694d0ccb24bfa18 (2)", resourceCulture);
+                object obj = ResourceManager.GetObject("backgroundQuiz", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] BioFragen {
+            get {
+                object obj = ResourceManager.GetObject("BioFragen", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vitruvianischer_Mann {
+        public static System.Drawing.Bitmap Vitruvianischer_Mann {
             get {
                 object obj = ResourceManager.GetObject("Vitruvianischer_Mann", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

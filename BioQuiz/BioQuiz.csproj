@@ -130,7 +130,7 @@
       <DependentUpon>StartFenster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -163,7 +163,7 @@
     <None Include="Resources\Vitruvianischer_Mann.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\dffe754431c9fb41c694d0ccb24bfa18 %282%29.jpg" />
+    <None Include="Resources\BackgroundQuiz.jpg" />
     <Content Include="Resources\favicon.ico" />
   </ItemGroup>
   <ItemGroup>

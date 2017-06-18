@@ -77,13 +77,14 @@
             this.radioButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton2.Location = new System.Drawing.Point(635, 87);
+            this.radioButton2.Location = new System.Drawing.Point(565, 87);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(111, 26);
             this.radioButton2.TabIndex = 2;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Antwort1";
             this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -105,7 +106,7 @@
             this.radioButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.radioButton4.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.radioButton4.Location = new System.Drawing.Point(635, 148);
+            this.radioButton4.Location = new System.Drawing.Point(565, 148);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(111, 26);
             this.radioButton4.TabIndex = 4;
@@ -123,7 +124,7 @@
             this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(0, 395);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(787, 41);
+            this.button1.Size = new System.Drawing.Size(929, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Weiter";
             this.button1.UseVisualStyleBackColor = false;
@@ -164,9 +165,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = global::BioQuiz.Properties.Resources.dffe754431c9fb41c694d0ccb24bfa18__2_;
+            this.BackgroundImage = global::BioQuiz.Properties.Resources.backgroundQuiz;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(787, 436);
+            this.ClientSize = new System.Drawing.Size(929, 436);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -118,10 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="backgroundQuiz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dffe754431c9fb41c694d0ccb24bfa18 (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BioFragen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BioFragen.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Vitruvianischer_Mann" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vitruvianischer_Mann.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dffe754431c9fb41c694d0ccb24bfa18 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dffe754431c9fb41c694d0ccb24bfa18 (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
