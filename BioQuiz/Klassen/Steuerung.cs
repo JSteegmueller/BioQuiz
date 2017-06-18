@@ -38,7 +38,7 @@ namespace BioQuiz.Klassen
 
         public static void init()
         {
-            fragenString = System.IO.File.ReadAllText("../../FragenJSON/BioFragen.json");
+            fragenString = System.IO.File.ReadAllText("BioFragen.json");
 
             fragenReader = new FragenCreator(fragenString);
             fragenListe = new FragenKatalog(fragenReader.getFragen());
