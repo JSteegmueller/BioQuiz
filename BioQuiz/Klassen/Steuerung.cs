@@ -108,6 +108,12 @@ namespace BioQuiz.Klassen
                 if (anzFragen > 1)
                 {
 
+                    foreach ( Control myCont in fragenForm.Controls)
+                    {
+                        myCont.Visible = false;
+                    }
+                    
+
                     StringBuilder cap = new StringBuilder("Frage " + (ctrFragen+2) + " von " + back);
                     fragenForm.Text = cap.ToString() ; 
 
@@ -119,6 +125,13 @@ namespace BioQuiz.Klassen
                     fragenForm.label1.Text = quizFragen[ctrFragen].derFrageSatz;
                     
                     anzFragen--;
+
+                    foreach (Control myCont in fragenForm.Controls)
+                    {
+                        myCont.Visible = true;
+                    }
+
+
                 }
                 else
                 {
