@@ -59,5 +59,15 @@ namespace BioQuiz.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vitruvianischer_Mann {
+            get {
+                object obj = ResourceManager.GetObject("Vitruvianischer_Mann", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

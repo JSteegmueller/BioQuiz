@@ -17,7 +17,7 @@
       "antwort3": "Zellkern",
       "antwort4": "Chloroplasten",
       "richtigeAntwort": "4",
-      "erklaerung": "Chloroplasten sind fuer die Photosynthese verantwortlich,was nur in der Pflanzlichen Eucyte passiert"
+      "erklaerung": "Chloroplasten sind fuer die Photosynthese verantwortlich, \n was nur in der Pflanzlichen Eucyte passiert"
     },
     "frage3": {
       "frage": "Gleichung der Photosynthese",
@@ -26,7 +26,7 @@
       "antwort3": "O2+Energie+H2O--> CO2+Glucose",
       "antwort4": "O2+CO2--> H2O+Energie+Glucose",
       "richtigeAntwort": "1",
-      "erklaerung": "Unser Abfallstoff CO2 wird von den Pflanzen in O2 umgewandelt. Dafuer benoetigen sie aber Wasser und Energie/Sonnenstrahlen."
+      "erklaerung": "Unser Abfallstoff CO2 wird von den Pflanzen in O2 umgewandelt. \n Dafuer benoetigen sie aber Wasser und Energie/Sonnenstrahlen."
     },
     "frage4": {
       "frage": "Phasen der Mitose",
@@ -34,7 +34,8 @@
       "antwort2": "Metaphase, Anaphase, Telophase, Prophase",
       "antwort3": "Prophase, Metaphase, Anaphase, Telophase",
       "antwort4": "Telophase, Prophase, Metaphase, Anaphase",
-      "richtigeAntwort": "3"
+      "richtigeAntwort": "3",
+      "erklaerung":  "Prophase, Metaphase, Anaphase, Telophase"
     },
     "frage5": {
       "frage": "Was ist das Watson-Crick-Modell?",

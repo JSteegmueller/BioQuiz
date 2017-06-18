@@ -35,5 +35,10 @@ namespace BioQuiz.Forms
         {
             Program.main.onEvent(QuizSteuerung.EVENT_BUTTON_ANLEITUNG);
         }
+
+        private void StartFenster_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

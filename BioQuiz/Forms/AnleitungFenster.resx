@@ -117,16 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Um eine Frage dem Programm hinzuzufuegen, müssen folgende Dinge beachtet werden.
-Die Fragen müssen in die FragenBioQuiz.json geschrieben werden
-
-1. Man kopiert eine komplette Frage, d.h. von beispielsweise ("frage1":) bis zu ("erklaerung")
-2. Man fügt diese ganz unten in der Datei wieder ein
-
-Nun kann man seine Frage in das Quiz einfuegen
-
-3. Verändert wird nur das, was hinter dem ( : ) steht
-4. Veränderte Datei speichern, schließen und das BiologieQuiz neu starten</value>
-  </data>
 </root>
