@@ -18,11 +18,13 @@ namespace BioQuiz.Klassen
         static int ctrFragen = 0;
         static bool frageRichtig = false;
         static int richtigeFragen = 0;
+        static Frage[] alleFragen;
 
         private static AnleitungFenster anleitungForm;
         private static EndUebersichtFenster endUebersichtForm;
         private static StartFenster startForm;
         private static FragenFenster fragenForm;
+        private static FragenEditor fragenEditForm;
 
 
 
@@ -32,6 +34,10 @@ namespace BioQuiz.Klassen
         public static int EVENT_BUTTON_ANLEITUNG = 2;
         public static int EVENT_BUTTON_FRAGEABGEBEN = 3;
         public static int EVENT_BUTTON_WEITER = 4;
+        public static int EVENT_BUTTON_BEARBEITEN = 5;
+        public static int EVENT_BUTTON_BACK = 6;
+        public static int EVENT_INDEX_CHANGE_EDIT = 7;
+        public static int EVENT_BUTTON_NEW_QUESTION = 8;
 
 
 
@@ -75,12 +81,12 @@ namespace BioQuiz.Klassen
                 if ( startForm.comboBox1.SelectedItem.ToString() != "Alle")
                 {
                     anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
-                    quizFragen = fragenListe.getRandFragen(anzFragen);
+                    quizFragen = fragenListe.GetRandFragen(anzFragen);
                 }
                 else
                 {
-                    anzFragen = fragenListe.getAnzFragen();
-                    quizFragen = fragenListe.getRandFragen(anzFragen);
+                    anzFragen = fragenListe.GetAnzFragen();
+                    quizFragen = fragenListe.GetRandFragen(anzFragen);
                 }
 
 
@@ -119,7 +125,6 @@ namespace BioQuiz.Klassen
 
                     ctrFragen++;
                     fragenForm.radioButton1.Text = quizFragen[ctrFragen].dieAntworten[0];
-                    
                     fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                     fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                     fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
@@ -201,6 +206,46 @@ namespace BioQuiz.Klassen
                 }
                 fragenForm.button1.Enabled = true;
                 fragenForm.button2.Enabled = false;
+            }
+            else if ( eventID == EVENT_BUTTON_BEARBEITEN)
+            {
+                fragenEditForm = new FragenEditor();
+                alleFragen = fragenListe.GetAlleFragen();
+
+
+                foreach ( Frage eineFrage in alleFragen)
+                {
+                    fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
+                }
+                fragenEditForm.Show();
+                
+            }
+            else if (eventID == EVENT_INDEX_CHANGE_EDIT)
+            {
+                int indexSelec = Convert.ToInt32(fragenEditForm.listBox1.SelectedIndices[0].ToString());
+
+                if (indexSelec <= alleFragen.LongLength-1)
+                { 
+                   fragenEditForm.textBox1.Text = alleFragen[indexSelec].derFrageSatz;
+                   fragenEditForm.textBox2.Text = alleFragen[indexSelec].dieAntworten[0];
+                   fragenEditForm.textBox3.Text = alleFragen[indexSelec].dieAntworten[1];
+                   fragenEditForm.textBox4.Text = alleFragen[indexSelec].dieAntworten[2];
+                   fragenEditForm.textBox5.Text = alleFragen[indexSelec].dieAntworten[3];
+                   fragenEditForm.numericUpDown1.Value = alleFragen[indexSelec].getRichtigeAntwortInt()+1;
+                   fragenEditForm.textBox7.Text = alleFragen[indexSelec].dieBegruendung;
+                }
+
+
+            }
+            else if ( eventID == EVENT_BUTTON_BACK)
+            {
+                fragenEditForm.Close();
+            }
+
+            else if ( eventID == EVENT_BUTTON_NEW_QUESTION)
+            {
+                fragenEditForm.listBox1.Items.Add("NeueFrage");
+                
             }
 
         }

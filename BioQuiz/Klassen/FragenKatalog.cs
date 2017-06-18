@@ -19,13 +19,13 @@ namespace BioQuiz.Klassen
             anzFragen = dieFragen.GetLength(0);
         }
 
-        public int getAnzFragen()
+        public int GetAnzFragen()
         {
             return anzFragen;
         }
         
         //Bekomme ein Array mit zufälligen Fragen 
-        public Frage[] getRandFragen(int anzGewollteFragen)
+        public Frage[] GetRandFragen(int anzGewollteFragen)
         {
             Frage[] returnFragen = new Frage[anzGewollteFragen];
 
@@ -52,6 +52,11 @@ namespace BioQuiz.Klassen
                 }
             }
             return returnFragen;
+        }
+
+        public Frage[] GetAlleFragen()
+        {
+            return dieFragen;
         }
     }
 }
