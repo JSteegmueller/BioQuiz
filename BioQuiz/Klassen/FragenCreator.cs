@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace BioQuiz.Klassen
@@ -37,7 +35,7 @@ namespace BioQuiz.Klassen
                 foreach (KeyValuePair<String, JToken> frageDaten in fragen)
                 {
                     dieFragen[fragenZaehler] = new Frage();
-                    dieFragen[fragenZaehler].dieFrage = (string)frageDaten.Value["frage"];
+                    dieFragen[fragenZaehler].derFrageSatz = (string)frageDaten.Value["frage"];
 
                     for ( int j = 0; j < 4; j++)
                     {

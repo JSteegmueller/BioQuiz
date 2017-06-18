@@ -1,33 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using BioQuiz.Forms;
-using BioQuiz.Klassen;
 using System.Windows.Forms;
 
 namespace BioQuiz.Klassen
 {
-    class QuizSteuerung
+    static class QuizSteuerung
     {
-        private FragenCreator fragenReader;
-        private FragenKatalog fragenListe;
-        private string fragenString;
-        private Frage[] quizFragen;
-        int anzFragen;
-        int back;
-        int ctrFragen = 0;
-        bool frageRichtig = false;
-        int richtigeFragen = 0;
+        private static FragenCreator fragenReader;
+        private static FragenKatalog fragenListe;
+        private static string fragenString;
+        private static Frage[] quizFragen;
+        static int anzFragen;
+        static int back;
+        static int ctrFragen = 0;
+        static bool frageRichtig = false;
+        static int richtigeFragen = 0;
 
-        private AnleitungFenster anleitungForm;
-        private EndUebersichtFenster endUebersichtForm;
-        private StartFenster startForm;
-        private FragenFenster fragenForm;
+        private static AnleitungFenster anleitungForm;
+        private static EndUebersichtFenster endUebersichtForm;
+        private static StartFenster startForm;
+        private static FragenFenster fragenForm;
 
 
-        
+
 
         public static int EVENT_BUTTON_BEENDEN = 0;
         public static int EVENT_BUTTON_START = 1;
@@ -39,7 +35,7 @@ namespace BioQuiz.Klassen
 
 
 
-        public void init()
+        public static void init()
         {
             fragenString = System.IO.File.ReadAllText("../../FragenJSON/BioFragen.json");
 
@@ -59,7 +55,7 @@ namespace BioQuiz.Klassen
             Application.Run(startForm);
         }
 
-        public void onEvent(int eventID)
+        public static void onEvent(int eventID)
         {
             if (eventID == EVENT_BUTTON_BEENDEN)
             {
@@ -80,7 +76,7 @@ namespace BioQuiz.Klassen
                 fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                 fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                 fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
-                fragenForm.label1.Text = quizFragen[ctrFragen].dieFrage;
+                fragenForm.label1.Text = quizFragen[ctrFragen].derFrageSatz;
                 fragenForm.label2.Visible = false;
                 StringBuilder cap = new StringBuilder("Frage " + 1 + " von " + back);
                 fragenForm.Text = cap.ToString();
@@ -108,7 +104,7 @@ namespace BioQuiz.Klassen
                     fragenForm.radioButton2.Text = quizFragen[ctrFragen].dieAntworten[1];
                     fragenForm.radioButton3.Text = quizFragen[ctrFragen].dieAntworten[2];
                     fragenForm.radioButton4.Text = quizFragen[ctrFragen].dieAntworten[3];
-                    fragenForm.label1.Text = quizFragen[ctrFragen].dieFrage;
+                    fragenForm.label1.Text = quizFragen[ctrFragen].derFrageSatz;
                     fragenForm.label2.Visible = false;
                     
                     anzFragen--;
@@ -120,7 +116,7 @@ namespace BioQuiz.Klassen
                     foreach (Frage x in quizFragen)
                     {
                         endUebersichtForm.dataGridView1.Rows.Add();
-                        endUebersichtForm.dataGridView1.Rows[i].Cells[0].Value = x.dieFrage;
+                        endUebersichtForm.dataGridView1.Rows[i].Cells[0].Value = x.derFrageSatz;
                         endUebersichtForm.dataGridView1.Rows[i].Cells[1].Value = x.getRichtigeAntwortString();
                         endUebersichtForm.dataGridView1.Rows[i].Cells[2].Value = x.dieAntworten[x.abgegebeneAntwort];
                         if(x.frageRichtigBeantwortet == 1)
