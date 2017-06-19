@@ -8,6 +8,7 @@ namespace BioQuiz.Klassen
 {
     class FragenKatalog
     {
+        private List<Frage> dieFragenListe;
         private Frage[] dieFragen;
         private int     anzFragen;
         private Random  randGenerator;
@@ -15,18 +16,34 @@ namespace BioQuiz.Klassen
         public FragenKatalog(Frage[] dieFragen)
         {
             this.dieFragen = dieFragen;
+            dieFragenListe = new List<Frage>();
+            
+            foreach ( Frage eineFrage in dieFragen)
+            {
+                dieFragenListe.Add(eineFrage);
+            }
+        
             randGenerator = new Random();
             anzFragen = dieFragen.GetLength(0);
         }
 
+        public void addFrageAtEnd(Frage neueFrage)
+        {
+            dieFragenListe.Add(neueFrage);
+            dieFragen = dieFragenListe.ToArray();
+        }
+
         public int GetAnzFragen()
         {
+            anzFragen = dieFragenListe.Count;
             return anzFragen;
         }
         
         //Bekomme ein Array mit zufälligen Fragen 
         public Frage[] GetRandFragen(int anzGewollteFragen)
         {
+            dieFragen = dieFragenListe.ToArray();
+
             Frage[] returnFragen = new Frage[anzGewollteFragen];
 
             for (int i = 0; i < anzGewollteFragen; i++)
@@ -56,7 +73,13 @@ namespace BioQuiz.Klassen
 
         public Frage[] GetAlleFragen()
         {
+            dieFragen = dieFragenListe.ToArray();
             return dieFragen;
+        }
+
+        public List<Frage> GetFragenListe()
+        {
+            return dieFragenListe;
         }
     }
 }
