@@ -43,7 +43,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -188,16 +187,6 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Richtige Antwort";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(119, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Speichern";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(12, 395);
@@ -210,7 +199,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(63, 440);
+            this.button3.Location = new System.Drawing.Point(93, 395);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 18;
@@ -225,7 +214,6 @@
             this.ClientSize = new System.Drawing.Size(648, 475);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label6);
@@ -266,7 +254,6 @@
         public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox7;
         public System.Windows.Forms.NumericUpDown numericUpDown1;
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

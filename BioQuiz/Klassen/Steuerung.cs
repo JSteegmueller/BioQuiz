@@ -14,6 +14,8 @@ namespace BioQuiz.Klassen
         private static FragenKatalog myFragenKatalog;
         private static string fragenString;
         private static Frage[] quizFragen;
+        static int alterAusgewKatalogEintrag = 0;
+        static int ausgewKatalogEintrag;
         static int anzFragen;
         static int back;
         static int ctrFragen = 0;
@@ -209,109 +211,89 @@ namespace BioQuiz.Klassen
                 fragenForm.button1.Enabled = true;
                 fragenForm.button2.Enabled = false;
             }
-            else if ( eventID == EVENT_BUTTON_BEARBEITEN)
+            else if (eventID == EVENT_BUTTON_BEARBEITEN)
             {
                 fragenEditForm = new FragenEditor();
-                alleFragen = myFragenKatalog.GetAlleFragen();
+                refreshList();
+                fragenEditForm.textBox1.Text = alleFragen[0].derFrageSatz;
+                fragenEditForm.textBox2.Text = alleFragen[0].dieAntworten[0];
+                fragenEditForm.textBox3.Text = alleFragen[0].dieAntworten[1];
+                fragenEditForm.textBox4.Text = alleFragen[0].dieAntworten[2];
+                fragenEditForm.textBox5.Text = alleFragen[0].dieAntworten[3];
+                fragenEditForm.numericUpDown1.Value = alleFragen[0].getRichtigeAntwortInt() + 1;
+                fragenEditForm.textBox7.Text = alleFragen[0].dieBegruendung;
 
-
-                foreach ( Frage eineFrage in alleFragen)
-                {
-                    fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
-                }
-                fragenEditForm.listBox1.SelectedIndex = 0;
                 fragenEditForm.Show();
                 
             }
             else if (eventID == EVENT_INDEX_CHANGE_EDIT)
             {
-                int indexSelec = fragenEditForm.listBox1.SelectedIndex;
-
-                if (indexSelec <= alleFragen.LongLength-1)
-                { 
-                   fragenEditForm.textBox1.Text = alleFragen[indexSelec].derFrageSatz;
-                   fragenEditForm.textBox2.Text = alleFragen[indexSelec].dieAntworten[0];
-                   fragenEditForm.textBox3.Text = alleFragen[indexSelec].dieAntworten[1];
-                   fragenEditForm.textBox4.Text = alleFragen[indexSelec].dieAntworten[2];
-                   fragenEditForm.textBox5.Text = alleFragen[indexSelec].dieAntworten[3];
-                   fragenEditForm.numericUpDown1.Value = alleFragen[indexSelec].getRichtigeAntwortInt()+1;
-                   fragenEditForm.textBox7.Text = alleFragen[indexSelec].dieBegruendung;
-                }
-
-                else if (indexSelec > alleFragen.LongLength - 1)
+                ausgewKatalogEintrag = fragenEditForm.listBox1.SelectedIndex;
+                saveQuestion();
+                if ( ausgewKatalogEintrag != -1)
                 {
-                    fragenEditForm.textBox1.Text = null;
-                    fragenEditForm.textBox2.Text = null;
-                    fragenEditForm.textBox3.Text = null;
-                    fragenEditForm.textBox4.Text = null;
-                    fragenEditForm.textBox5.Text = null;
-                    fragenEditForm.numericUpDown1.Value = 1;
-                    fragenEditForm.textBox7.Text = null;
+                    fragenEditForm.textBox1.Text = alleFragen[ausgewKatalogEintrag].derFrageSatz;
+                    fragenEditForm.textBox2.Text = alleFragen[ausgewKatalogEintrag].dieAntworten[0];
+                    fragenEditForm.textBox3.Text = alleFragen[ausgewKatalogEintrag].dieAntworten[1];
+                    fragenEditForm.textBox4.Text = alleFragen[ausgewKatalogEintrag].dieAntworten[2];
+                    fragenEditForm.textBox5.Text = alleFragen[ausgewKatalogEintrag].dieAntworten[3];
+                    fragenEditForm.numericUpDown1.Value = alleFragen[ausgewKatalogEintrag].getRichtigeAntwortInt() + 1;
+                    fragenEditForm.textBox7.Text = alleFragen[ausgewKatalogEintrag].dieBegruendung;
+                    refreshList();
+                    alterAusgewKatalogEintrag = ausgewKatalogEintrag;
                 }
-
-
             }
-            else if ( eventID == EVENT_BUTTON_BACK)
+            else if (eventID == EVENT_BUTTON_BACK)
             {
                 fragenEditForm.Close();
             }
-
-            else if ( eventID == EVENT_BUTTON_NEW_QUESTION)
+            else if (eventID == EVENT_BUTTON_NEW_QUESTION)
             {
-                fragenEditForm.listBox1.Items.Add("NeueFrage");
-                fragenEditForm.listBox1.SelectedIndex = fragenEditForm.listBox1.Items.Count -1 ;
-                fragenEditForm.textBox1.Text = null;
-                fragenEditForm.textBox2.Text = null;
-                fragenEditForm.textBox3.Text = null;
-                fragenEditForm.textBox4.Text = null;
-                fragenEditForm.textBox5.Text = null;
-                fragenEditForm.numericUpDown1.Value = 1;
-                fragenEditForm.textBox7.Text = null;
+                Frage neueFrage = new Frage();
 
+                neueFrage.derFrageSatz = fragenEditForm.textBox1.Text = "NeueFrage";
+                neueFrage.dieAntworten[0] =  fragenEditForm.textBox2.Text = null;
+                neueFrage.dieAntworten[1] = fragenEditForm.textBox3.Text = null;
+                neueFrage.dieAntworten[2] = fragenEditForm.textBox4.Text = null;
+                neueFrage.dieAntworten[3] = fragenEditForm.textBox5.Text = null;
+                fragenEditForm.numericUpDown1.Value = new decimal(1);
+                neueFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value; 
+                neueFrage.dieBegruendung =  fragenEditForm.textBox7.Text = null; 
+
+                myFragenKatalog.addFrageAtEnd(neueFrage);
+
+                alterAusgewKatalogEintrag = fragenEditForm.listBox1.Items.Count ;
+                ausgewKatalogEintrag = fragenEditForm.listBox1.SelectedIndex;
+                saveQuestion();
+                refreshList();
+                fragenEditForm.listBox1.SelectedItem = fragenEditForm.listBox1.Items.Count - 1;
 
             }
+        }
 
-            else if ( eventID == EVENT_BUTTON_SAVE_QUESTION)
+        public static void saveQuestion()
+        {
+            List<Frage> myFragenListe = myFragenKatalog.GetFragenListe();
+
+            Frage editierteFrage = myFragenListe[alterAusgewKatalogEintrag];
+            editierteFrage.derFrageSatz = fragenEditForm.textBox1.Text;
+            editierteFrage.dieBegruendung = fragenEditForm.textBox7.Text;
+            editierteFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value - 1;
+            editierteFrage.dieAntworten[0] = fragenEditForm.textBox2.Text;
+            editierteFrage.dieAntworten[1] = fragenEditForm.textBox3.Text;
+            editierteFrage.dieAntworten[2] = fragenEditForm.textBox4.Text;
+            editierteFrage.dieAntworten[3] = fragenEditForm.textBox5.Text;
+
+        }
+
+        public static void refreshList()
+        {
+            alleFragen = myFragenKatalog.GetAlleFragen();
+            fragenEditForm.listBox1.Items.Clear();
+            foreach (Frage eineFrage in alleFragen)
             {
-                int indexSelec = fragenEditForm.listBox1.SelectedIndex;
-
-                List<Frage> myFragenListe = myFragenKatalog.GetFragenListe(); 
-
-                if ( indexSelec <= alleFragen.Length-1)
-                {
-                    Frage editierteFrage = myFragenListe[indexSelec];
-                    editierteFrage.derFrageSatz = fragenEditForm.textBox1.Text;
-                    editierteFrage.dieBegruendung = fragenEditForm.textBox7.Text;
-                    editierteFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value-1;
-                    editierteFrage.dieAntworten[0] = fragenEditForm.textBox2.Text;
-                    editierteFrage.dieAntworten[1] = fragenEditForm.textBox3.Text;
-                    editierteFrage.dieAntworten[2] = fragenEditForm.textBox4.Text;
-                    editierteFrage.dieAntworten[3] = fragenEditForm.textBox5.Text;
-               
-                }
-
-                else if ( indexSelec > alleFragen.Length - 1)
-                {
-                    Frage neueFrage = new Frage();
-                    neueFrage.derFrageSatz = fragenEditForm.textBox1.Text;
-                    neueFrage.dieBegruendung = fragenEditForm.textBox7.Text;
-                    neueFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value - 1;
-                    neueFrage.dieAntworten[0] = fragenEditForm.textBox2.Text;
-                    neueFrage.dieAntworten[1] = fragenEditForm.textBox3.Text;
-                    neueFrage.dieAntworten[2] = fragenEditForm.textBox4.Text;
-                    neueFrage.dieAntworten[3] = fragenEditForm.textBox5.Text;
-                    myFragenKatalog.addFrageAtEnd(neueFrage);
-                }
-
-                alleFragen = myFragenKatalog.GetAlleFragen();
-                fragenEditForm.listBox1.Items.Clear();
-                foreach (Frage eineFrage in alleFragen)
-                {
-                    fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
-                }
-                fragenEditForm.listBox1.SelectedIndex = indexSelec;
+                fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
             }
-
         }
     }
 }
