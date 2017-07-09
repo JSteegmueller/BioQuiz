@@ -50,20 +50,20 @@ namespace BioQuiz.Klassen
             {
                 returnFragen[i] = dieFragen[randGenerator.Next(0, anzFragen)];
 
-                //Keine Frage doppelt wenn anzFragen > anzGewollteFragen //
+                //Keine Frage doppelt wenn anzFragen > anzGewollteFragen 
                 if(anzFragen >= anzGewollteFragen)
                 {
-                    int safe = i;
-                    bool eigeneFrage = true;
-                    foreach (Frage eineFrage in returnFragen)
+                    int aktuellerFragenIndex = i;                 // i ist die Anzahl der durchläufe der Zählschleife, aktuelle Anzahl der Fragen im Array 
+                    bool frageDoppelt = false;            // Die Frage darf einmal im Array vorkommen
+                    foreach (Frage eineFrage in returnFragen)    //Für jede Frage im FragenArray
                     {
-                        if (eineFrage == returnFragen[safe])
+                        if (eineFrage == returnFragen[aktuellerFragenIndex])   //Wenn eine Frage im Array ist die Gleiche wie die Aktuell neu hinzugefügte    
                         {
-                            if (eigeneFrage == false)
+                            if (frageDoppelt == true)                //Doppelte Frage erkannnt
                             {
-                                i--;
+                                i--;                          
                             }
-                            eigeneFrage = false;
+                            frageDoppelt = true;                     //Die frage ist nun 1-mal vorgekommen
                         }
                     }
                 }
