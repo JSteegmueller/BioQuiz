@@ -4,13 +4,14 @@ using BioQuiz.Forms;
 using BioQuiz.Properties;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace BioQuiz.Klassen
 {
     static class QuizSteuerung
     {
-        private static FragenCreator fragenReader;
-        private static FragenKatalog fragenListe;
+        private static JSONFragenParser myJSONFragenParser;
+        private static FragenPool myFragenPool;
         private static string fragenString;
         private static Frage[] quizFragen;
         static int anzFragen;
@@ -19,6 +20,10 @@ namespace BioQuiz.Klassen
         static bool frageRichtig = false;
         static int richtigeFragen = 0;
         static Frage[] alleFragen;
+        static String aktItem;
+        static int index;
+        static int newFragenZaehler = 0;
+
 
         private static AnleitungFenster anleitungForm;
         private static EndUebersichtFenster endUebersichtForm;
@@ -38,6 +43,7 @@ namespace BioQuiz.Klassen
         public static int EVENT_BUTTON_BACK = 6;
         public static int EVENT_INDEX_CHANGE_EDIT = 7;
         public static int EVENT_BUTTON_NEW_QUESTION = 8;
+        public static int EVENT_BUTTON_SAVE_QUESTION = 9;
 
 
 
@@ -45,10 +51,14 @@ namespace BioQuiz.Klassen
 
         public static void init()
         {
+            //Einlesen der JSON-Datei
             fragenString = Encoding.Default.GetString(Resources.BioFragen);
 
-            fragenReader = new FragenCreator(fragenString);
-            fragenListe = new FragenKatalog(fragenReader.getFragen());
+            //Parsen der JSON
+            myJSONFragenParser = new JSONFragenParser(fragenString);
+
+            //Fragen der JSON in den Fragenpool
+            myFragenPool = new FragenPool(myJSONFragenParser.getFragen());
 
 
             Application.EnableVisualStyles();
@@ -69,11 +79,13 @@ namespace BioQuiz.Klassen
             {
                 Application.Exit();
             }
+
             else if (eventID == EVENT_BUTTON_ANLEITUNG)
             {
                 anleitungForm.Show();
                 anleitungForm = new AnleitungFenster();
             } 
+
             else if (eventID == EVENT_BUTTON_START)
             {
                 startForm.Hide();
@@ -81,12 +93,12 @@ namespace BioQuiz.Klassen
                 if ( startForm.comboBox1.SelectedItem.ToString() != "Alle")
                 {
                     anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
-                    quizFragen = fragenListe.GetRandFragen(anzFragen);
+                    quizFragen = myFragenPool.GetRandFragen(anzFragen);
                 }
                 else
                 {
-                    anzFragen = fragenListe.GetAnzFragen();
-                    quizFragen = fragenListe.GetRandFragen(anzFragen);
+                    anzFragen = myFragenPool.GetAnzFragen();
+                    quizFragen = myFragenPool.GetRandFragen(anzFragen);
                 }
 
 
@@ -106,6 +118,7 @@ namespace BioQuiz.Klassen
 
                 fragenForm.Show();
             }
+
             else if (eventID == EVENT_BUTTON_WEITER)
             {
                 fragenForm.label3.Text = "";
@@ -166,6 +179,7 @@ namespace BioQuiz.Klassen
                 fragenForm.button2.Enabled = true;
 
             }
+
             else if (eventID == EVENT_BUTTON_FRAGEABGEBEN)
             {
                 if (fragenForm.radioButton1.Checked == true)
@@ -207,47 +221,150 @@ namespace BioQuiz.Klassen
                 fragenForm.button1.Enabled = true;
                 fragenForm.button2.Enabled = false;
             }
-            else if ( eventID == EVENT_BUTTON_BEARBEITEN)
+           
+            //Fragen Bearbeiten
+            else if (eventID == EVENT_BUTTON_BEARBEITEN)
             {
                 fragenEditForm = new FragenEditor();
-                alleFragen = fragenListe.GetAlleFragen();
-
-
-                foreach ( Frage eineFrage in alleFragen)
-                {
-                    fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
-                }
+                refreshList();
+                index = 0;
+                refreshEntry(index);
+                fragenEditForm.listBox1.SetSelected(index, true);
                 fragenEditForm.Show();
-                
             }
+
             else if (eventID == EVENT_INDEX_CHANGE_EDIT)
             {
-                int indexSelec = Convert.ToInt32(fragenEditForm.listBox1.SelectedIndices[0].ToString());
+                //Alte Frage speichern
+                saveQuestion(index);
 
-                if (indexSelec <= alleFragen.LongLength-1)
-                { 
-                   fragenEditForm.textBox1.Text = alleFragen[indexSelec].derFrageSatz;
-                   fragenEditForm.textBox2.Text = alleFragen[indexSelec].dieAntworten[0];
-                   fragenEditForm.textBox3.Text = alleFragen[indexSelec].dieAntworten[1];
-                   fragenEditForm.textBox4.Text = alleFragen[indexSelec].dieAntworten[2];
-                   fragenEditForm.textBox5.Text = alleFragen[indexSelec].dieAntworten[3];
-                   fragenEditForm.numericUpDown1.Value = alleFragen[indexSelec].getRichtigeAntwortInt()+1;
-                   fragenEditForm.textBox7.Text = alleFragen[indexSelec].dieBegruendung;
+                //Neuer gewählter Index herausfinden
+                aktItem = fragenEditForm.listBox1.SelectedItem.ToString();
+                index = fragenEditForm.listBox1.FindString(aktItem);
+
+                //ListBox Items erneuern
+                refreshList();
+
+                //Angeklickter Eintrag auswählen ( ohne stackoverflow)
+                fragenEditForm.listBox1.SelectedIndexChanged -= new EventHandler( fragenEditForm.listBox1_SelectedIndexChanged );
+                fragenEditForm.listBox1.SetSelected(index, true);
+                fragenEditForm.listBox1.SelectedIndexChanged += new EventHandler(fragenEditForm.listBox1_SelectedIndexChanged);
+
+                //Index in der Liste ?
+                if ( index != -1)
+                {
+                    //Textfelder erneuern
+                    refreshEntry(index);
                 }
-
-
             }
-            else if ( eventID == EVENT_BUTTON_BACK)
+
+            else if (eventID == EVENT_BUTTON_BACK)
             {
+                //Aktuelle Frage speichern bevor sich Fenster schließt
+                saveQuestion(index);
                 fragenEditForm.Close();
             }
 
-            else if ( eventID == EVENT_BUTTON_NEW_QUESTION)
+            else if (eventID == EVENT_BUTTON_NEW_QUESTION)
             {
-                fragenEditForm.listBox1.Items.Add("NeueFrage");
-                
+                //Aktuelle Frage Speichern
+                saveQuestion(index);
+
+                //Neue Frage in die Liste
+                insertNewQuestion();
+
+                //Neue Frage Anzeigen
+                refreshList();
+
+                //Neue Frage auswählen
+                fragenEditForm.listBox1.SelectedIndexChanged -= new EventHandler(fragenEditForm.listBox1_SelectedIndexChanged);
+                fragenEditForm.listBox1.SetSelected(fragenEditForm.listBox1.Items.Count - 1, true);
+                fragenEditForm.listBox1.SelectedIndexChanged += new EventHandler(fragenEditForm.listBox1_SelectedIndexChanged);
+
+                //Neuer gewählter Index herausfinden
+                aktItem = fragenEditForm.listBox1.SelectedItem.ToString();
+                index = fragenEditForm.listBox1.FindString(aktItem);
+            }
+        }
+
+
+        //Frage mit Index "x" speichern
+        private static void saveQuestion(int index)
+        {
+            //Liste aller Fragen aus dem Katalog
+            List<Frage> myFragenListe = myFragenPool.GetFragenListe();
+            
+            //Frage herausfinden, die editiert werden soll
+            Frage editierteFrage = myFragenListe[index];
+
+            //Aenderungen übernhemen
+            editierteFrage.derFrageSatz = fragenEditForm.textBox1.Text;
+            editierteFrage.dieBegruendung = fragenEditForm.textBox7.Text;
+            editierteFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value - 1;
+            editierteFrage.dieAntworten[0] = fragenEditForm.textBox2.Text;
+            editierteFrage.dieAntworten[1] = fragenEditForm.textBox3.Text;
+            editierteFrage.dieAntworten[2] = fragenEditForm.textBox4.Text;
+            editierteFrage.dieAntworten[3] = fragenEditForm.textBox5.Text;
+        }
+
+        //ListBox neu Zeichnen
+        private static void refreshList()
+        {
+            //ListBox stoppt zeichnen
+            fragenEditForm.listBox1.BeginUpdate();
+
+            //Alle fragen im Katalog in ein Array
+            alleFragen = myFragenPool.GetAlleFragen();
+
+            //ListBox Inhalt loeschen
+            fragenEditForm.listBox1.Items.Clear();
+
+            //ListBox befuellen
+            foreach (Frage eineFrage in alleFragen)
+            {
+                fragenEditForm.listBox1.Items.Add(eineFrage.derFrageSatz);
             }
 
+            //ListBox startet zeichnen
+            fragenEditForm.listBox1.EndUpdate();
+        }
+
+        //EditBox Eintraege mit Frage Index "x" erneuern
+        private static void refreshEntry(int index)
+        {
+            fragenEditForm.textBox1.Text = alleFragen[index].derFrageSatz;
+            fragenEditForm.textBox2.Text = alleFragen[index].dieAntworten[0];
+            fragenEditForm.textBox3.Text = alleFragen[index].dieAntworten[1];
+            fragenEditForm.textBox4.Text = alleFragen[index].dieAntworten[2];
+            fragenEditForm.textBox5.Text = alleFragen[index].dieAntworten[3];
+            fragenEditForm.numericUpDown1.Value = alleFragen[index].getRichtigeAntwortInt() + 1;
+            fragenEditForm.textBox7.Text = alleFragen[index].dieBegruendung;
+        }
+
+        //Neue Frage in den Katalog speichern
+        private static void insertNewQuestion()
+        {
+            Frage neueFrage = new Frage();
+
+            //Da jeder Name der Liste einmalig sein muss
+            StringBuilder fragenName = new StringBuilder();
+            fragenName.Append("Frage " + newFragenZaehler);
+
+            //Setzten der Attribute und der leeren Text-Boxen
+            neueFrage.derFrageSatz = fragenEditForm.textBox1.Text = fragenName.ToString();
+            neueFrage.dieAntworten[0] = fragenEditForm.textBox2.Text = null;
+            neueFrage.dieAntworten[1] = fragenEditForm.textBox3.Text = null;
+            neueFrage.dieAntworten[2] = fragenEditForm.textBox4.Text = null;
+            neueFrage.dieAntworten[3] = fragenEditForm.textBox5.Text = null;
+            fragenEditForm.numericUpDown1.Value = new decimal(1);
+            neueFrage.richtigAntwort = (int)fragenEditForm.numericUpDown1.Value;
+            neueFrage.dieBegruendung = fragenEditForm.textBox7.Text = null;
+
+            //Neue Frage in den Katalog
+            myFragenPool.addFrageAtEnd(neueFrage);
+
+            //Name einmalig...
+            newFragenZaehler++;
         }
     }
 }

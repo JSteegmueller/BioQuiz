@@ -122,9 +122,9 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 420);
+            this.button1.Location = new System.Drawing.Point(0, 425);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1184, 41);
+            this.button1.Size = new System.Drawing.Size(1182, 41);
             this.button1.TabIndex = 5;
             this.button1.Text = "Weiter";
             this.button1.UseVisualStyleBackColor = false;
@@ -167,7 +167,7 @@
             this.AutoSize = true;
             this.BackgroundImage = global::BioQuiz.Properties.Resources.backgroundQuiz;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1184, 461);
+            this.ClientSize = new System.Drawing.Size(1182, 466);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.radioButton1);
