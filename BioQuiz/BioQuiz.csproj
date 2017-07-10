@@ -120,6 +120,7 @@
     <Compile Include="Klassen\Frage.cs" />
     <Compile Include="Klassen\JSONFragenParser.cs" />
     <Compile Include="Klassen\FragenPool.cs" />
+    <Compile Include="Klassen\JSONFragenWriter.cs" />
     <Compile Include="Klassen\Steuerung.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

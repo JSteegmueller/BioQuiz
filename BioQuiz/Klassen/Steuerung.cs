@@ -10,6 +10,7 @@ namespace BioQuiz.Klassen
 {
     static class QuizSteuerung
     {
+        private static JSONFragenWriter myJSONFragenWriter;
         private static JSONFragenParser myJSONFragenParser;
         private static FragenPool myFragenPool;
         private static string fragenString;
@@ -51,11 +52,21 @@ namespace BioQuiz.Klassen
 
         public static void init()
         {
-            //Einlesen der JSON-Datei
-            fragenString = Encoding.Default.GetString(Resources.BioFragen);
+            myJSONFragenWriter = new JSONFragenWriter();
+            myJSONFragenWriter.testc();
 
-            //Parsen der JSON
-            myJSONFragenParser = new JSONFragenParser(fragenString);
+
+
+
+            //Einlesen der JSON-Datei in der Resource
+            //fragenString = Encoding.Default.GetString(Resources.BioFragen);
+            //im Verzeichnis
+            fragenString = System.IO.File.ReadAllText("BioFragen.json");
+           
+
+
+                       //Parsen der JSON
+                       myJSONFragenParser = new JSONFragenParser(fragenString);
 
             //Fragen der JSON in den Fragenpool
             myFragenPool = new FragenPool(myJSONFragenParser.getFragen());
