@@ -10,8 +10,8 @@ namespace BioQuiz.Klassen
 {
     static class QuizSteuerung
     {
-        private static FragenCreator fragenReader;
-        private static FragenKatalog myFragenKatalog;
+        private static JSONFragenParser myJSONFragenParser;
+        private static FragenPool myFragenPool;
         private static string fragenString;
         private static Frage[] quizFragen;
         static int anzFragen;
@@ -55,10 +55,10 @@ namespace BioQuiz.Klassen
             fragenString = Encoding.Default.GetString(Resources.BioFragen);
 
             //Parsen der JSON
-            fragenReader = new FragenCreator(fragenString);
+            myJSONFragenParser = new JSONFragenParser(fragenString);
 
             //Fragen der JSON in den Fragenpool
-            myFragenKatalog = new FragenKatalog(fragenReader.getFragen());
+            myFragenPool = new FragenPool(myJSONFragenParser.getFragen());
 
 
             Application.EnableVisualStyles();
@@ -93,12 +93,12 @@ namespace BioQuiz.Klassen
                 if ( startForm.comboBox1.SelectedItem.ToString() != "Alle")
                 {
                     anzFragen = Convert.ToInt32(startForm.comboBox1.SelectedItem.ToString());
-                    quizFragen = myFragenKatalog.GetRandFragen(anzFragen);
+                    quizFragen = myFragenPool.GetRandFragen(anzFragen);
                 }
                 else
                 {
-                    anzFragen = myFragenKatalog.GetAnzFragen();
-                    quizFragen = myFragenKatalog.GetRandFragen(anzFragen);
+                    anzFragen = myFragenPool.GetAnzFragen();
+                    quizFragen = myFragenPool.GetRandFragen(anzFragen);
                 }
 
 
@@ -292,7 +292,7 @@ namespace BioQuiz.Klassen
         private static void saveQuestion(int index)
         {
             //Liste aller Fragen aus dem Katalog
-            List<Frage> myFragenListe = myFragenKatalog.GetFragenListe();
+            List<Frage> myFragenListe = myFragenPool.GetFragenListe();
             
             //Frage herausfinden, die editiert werden soll
             Frage editierteFrage = myFragenListe[index];
@@ -314,7 +314,7 @@ namespace BioQuiz.Klassen
             fragenEditForm.listBox1.BeginUpdate();
 
             //Alle fragen im Katalog in ein Array
-            alleFragen = myFragenKatalog.GetAlleFragen();
+            alleFragen = myFragenPool.GetAlleFragen();
 
             //ListBox Inhalt loeschen
             fragenEditForm.listBox1.Items.Clear();
@@ -361,7 +361,7 @@ namespace BioQuiz.Klassen
             neueFrage.dieBegruendung = fragenEditForm.textBox7.Text = null;
 
             //Neue Frage in den Katalog
-            myFragenKatalog.addFrageAtEnd(neueFrage);
+            myFragenPool.addFrageAtEnd(neueFrage);
 
             //Name einmalig...
             newFragenZaehler++;

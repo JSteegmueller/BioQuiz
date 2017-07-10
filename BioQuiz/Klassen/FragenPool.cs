@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BioQuiz.Klassen
 {
-    class FragenKatalog
+    class FragenPool
     {
         private List<Frage> dieFragenListe;
         private Frage[] dieFragen;
         private int     anzFragen;
         private Random  randGenerator;
 
-        public FragenKatalog(Frage[] dieFragen)
+        public FragenPool(Frage[] dieFragen)
         {
             this.dieFragen = dieFragen;
             dieFragenListe = new List<Frage>();

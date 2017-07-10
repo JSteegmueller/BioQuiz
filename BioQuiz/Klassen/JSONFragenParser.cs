@@ -5,11 +5,11 @@ using Newtonsoft.Json.Linq;
 
 namespace BioQuiz.Klassen
 {
-    class FragenCreator
+    class JSONFragenParser
     {
         private string jsonFragen;     //Eingelesene JSON-Datei
 
-        public FragenCreator(string jsonFragen)
+        public JSONFragenParser(string jsonFragen)
         {
             this.jsonFragen = jsonFragen;
         }

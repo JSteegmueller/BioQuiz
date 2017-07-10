@@ -118,8 +118,8 @@
       <DependentUpon>StartFenster.cs</DependentUpon>
     </Compile>
     <Compile Include="Klassen\Frage.cs" />
-    <Compile Include="Klassen\FragenCreator.cs" />
-    <Compile Include="Klassen\FragenKatalog.cs" />
+    <Compile Include="Klassen\JSONFragenParser.cs" />
+    <Compile Include="Klassen\FragenPool.cs" />
     <Compile Include="Klassen\Steuerung.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
