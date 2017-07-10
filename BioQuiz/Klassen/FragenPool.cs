@@ -28,6 +28,7 @@ namespace BioQuiz.Klassen
         {
             dieFragenListe.Add(neueFrage);
             dieFragen = dieFragenListe.ToArray();
+            anzFragen = dieFragen.GetLength(0);
         }
 
         public int GetAnzFragen()
