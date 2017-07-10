@@ -18,14 +18,9 @@ namespace BioQuiz.Forms
             InitializeComponent();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             QuizSteuerung.onEvent(QuizSteuerung.EVENT_INDEX_CHANGE_EDIT);
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -38,6 +33,5 @@ namespace BioQuiz.Forms
         {
             QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_NEW_QUESTION);
         }
-
     }
 }
