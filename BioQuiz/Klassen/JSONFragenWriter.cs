@@ -10,7 +10,7 @@ namespace BioQuiz.Klassen
         {
             //Schreibt den JSON-String in die json-Datei
             string currentPath = Directory.GetCurrentDirectory();
-            File.WriteAllText(currentPath + "\\BioFragen.json", jsonString);
+            File.WriteAllText("..//..//FragenJSON//BioFragen.json", jsonString);
         }
 
         public void writeJSONStringFromQuestionPool(Frage[] dieFragen)

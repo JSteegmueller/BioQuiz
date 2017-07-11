@@ -390,7 +390,7 @@ namespace BioQuiz.Klassen
             //Einlesen der JSON-Datei in der Resource...
             //fragenString = Encoding.Default.GetString(Resources.BioFragen);
             //...im Verzeichnis
-            fragenString = System.IO.File.ReadAllText("BioFragen.json");
+            fragenString = System.IO.File.ReadAllText("..//..//FragenJSON//BioFragen.json");
 
             //Parsen der JSON
             myJSONFragenParser = new JSONFragenParser(fragenString);

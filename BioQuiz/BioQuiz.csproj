@@ -150,6 +150,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="FragenJSON\BioFragen.json" />
     <None Include="Resources\BioFragen.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,9 +177,7 @@
     <None Include="Resources\BackgroundQuiz.jpg" />
     <Content Include="Resources\favicon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FragenJSON\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PublishFile Include="BioQuiz.pdb">
       <Visible>False</Visible>

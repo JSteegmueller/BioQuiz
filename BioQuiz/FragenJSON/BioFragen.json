@@ -1,0 +1,13 @@
+[
+  {
+    "frage0": {
+      "frage": "Was ist das Watson-Crick-Modell?",
+      "antwort1": "Ein Modell unsere DNA",
+      "antwort2": "Ein Modell der Nahrungskette",
+      "antwort3": "Ein Modell unseres Planeten als riesiges Biotop",
+      "antwort4": "Ein Modell unserer Koerperzellen",
+      "richtigeAntwort": "1",
+      "erklaerung": "Im Jahr 1953 entstandene Modell unsere DNA von J.Watson und F.Crick"
+    }
+  }
+]
