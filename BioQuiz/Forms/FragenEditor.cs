@@ -26,5 +26,10 @@ namespace BioQuiz.Forms
         {
             QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_NEW_QUESTION);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QuizSteuerung.onEvent(QuizSteuerung.EVENT_BUTTON_FRAGE_LOESCHEN);
+        }
     }
 }

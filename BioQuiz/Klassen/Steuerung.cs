@@ -35,16 +35,17 @@ namespace BioQuiz.Klassen
 
 
 
-        public static int EVENT_BUTTON_BEENDEN = 0;
-        public static int EVENT_BUTTON_START = 1;
-        public static int EVENT_BUTTON_ANLEITUNG = 2;
-        public static int EVENT_BUTTON_FRAGEABGEBEN = 3;
-        public static int EVENT_BUTTON_WEITER = 4;
-        public static int EVENT_BUTTON_BEARBEITEN = 5;
-        public static int EVENT_BUTTON_BACK = 6;
-        public static int EVENT_INDEX_CHANGE_EDIT = 7;
-        public static int EVENT_BUTTON_NEW_QUESTION = 8;
-        public static int EVENT_BUTTON_SAVE_QUESTION = 9;
+        public static readonly int EVENT_BUTTON_BEENDEN = 0;
+        public static readonly int EVENT_BUTTON_START = 1;
+        public static readonly int EVENT_BUTTON_ANLEITUNG = 2;
+        public static readonly int EVENT_BUTTON_FRAGEABGEBEN = 3;
+        public static readonly int EVENT_BUTTON_WEITER = 4;
+        public static readonly int EVENT_BUTTON_BEARBEITEN = 5;
+        public static readonly int EVENT_BUTTON_BACK = 6;
+        public static readonly int EVENT_INDEX_CHANGE_EDIT = 7;
+        public static readonly int EVENT_BUTTON_NEW_QUESTION = 8;
+        public static readonly int EVENT_BUTTON_SAVE_QUESTION = 9;
+        public static readonly int EVENT_BUTTON_FRAGE_LOESCHEN = 10;
 
 
 
@@ -283,6 +284,15 @@ namespace BioQuiz.Klassen
                 aktItem = fragenEditForm.listBox1.SelectedItem.ToString();
                 index = fragenEditForm.listBox1.FindString(aktItem);
             }
+
+            else if (eventID == EVENT_BUTTON_FRAGE_LOESCHEN)
+            {
+                deleteQuestion(index);
+                refreshList();
+                index = fragenEditForm.listBox1.Items.Count-1;
+                refreshEntry(index);
+                fragenEditForm.listBox1.SetSelected(index, true);
+            }
         }
 
 
@@ -303,6 +313,15 @@ namespace BioQuiz.Klassen
             editierteFrage.dieAntworten[1] = fragenEditForm.textBox3.Text;
             editierteFrage.dieAntworten[2] = fragenEditForm.textBox4.Text;
             editierteFrage.dieAntworten[3] = fragenEditForm.textBox5.Text;
+        }
+
+        //Frage mit Index "x" löschen
+        private static void deleteQuestion(int index)
+        {
+            if ( fragenEditForm.listBox1.Items.Count > 1)
+            {
+                myFragenPool.GetFragenListe().RemoveAt(index);
+            }
         }
 
         //ListBox neu Zeichnen
@@ -365,6 +384,7 @@ namespace BioQuiz.Klassen
             newFragenZaehler++;
         }
 
+        //Fragen aus Datei in den FragenPool laden
         private static void loadQuestions()
         {
             //Einlesen der JSON-Datei in der Resource...
