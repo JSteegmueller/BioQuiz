@@ -52,25 +52,7 @@ namespace BioQuiz.Klassen
 
         public static void init()
         {
-            myJSONFragenWriter = new JSONFragenWriter();
-            myJSONFragenWriter.testc();
-
-
-
-
-            //Einlesen der JSON-Datei in der Resource
-            //fragenString = Encoding.Default.GetString(Resources.BioFragen);
-            //im Verzeichnis
-            fragenString = System.IO.File.ReadAllText("BioFragen.json");
-           
-
-
-                       //Parsen der JSON
-                       myJSONFragenParser = new JSONFragenParser(fragenString);
-
-            //Fragen der JSON in den Fragenpool
-            myFragenPool = new FragenPool(myJSONFragenParser.getFragen());
-
+            loadQuestions();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -79,6 +61,8 @@ namespace BioQuiz.Klassen
             endUebersichtForm = new EndUebersichtFenster();
             startForm = new StartFenster();
             fragenForm = new FragenFenster();
+            myJSONFragenWriter = new JSONFragenWriter();
+
 
             startForm.comboBox1.SelectedIndex = 0;
             Application.Run(startForm);
@@ -274,6 +258,9 @@ namespace BioQuiz.Klassen
                 //Aktuelle Frage speichern bevor sich Fenster schließt
                 saveQuestion(index);
                 fragenEditForm.Close();
+                alleFragen = myFragenPool.GetAlleFragen();
+                myJSONFragenWriter.writeJSONStringFromQuestionPool(alleFragen);
+                loadQuestions();
             }
 
             else if (eventID == EVENT_BUTTON_NEW_QUESTION)
@@ -376,6 +363,20 @@ namespace BioQuiz.Klassen
 
             //Name einmalig...
             newFragenZaehler++;
+        }
+
+        private static void loadQuestions()
+        {
+            //Einlesen der JSON-Datei in der Resource...
+            //fragenString = Encoding.Default.GetString(Resources.BioFragen);
+            //...im Verzeichnis
+            fragenString = System.IO.File.ReadAllText("BioFragen.json");
+
+            //Parsen der JSON
+            myJSONFragenParser = new JSONFragenParser(fragenString);
+
+            //Fragen der JSON in den Fragenpool
+            myFragenPool = new FragenPool(myJSONFragenParser.getFragen());
         }
     }
 }
