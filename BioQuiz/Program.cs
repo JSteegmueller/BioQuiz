@@ -7,6 +7,7 @@ namespace BioQuiz
     {
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
+        /// Hello
         /// </summary>
         [STAThread]
         static void Main()
